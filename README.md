@@ -124,7 +124,7 @@ You can change the CC numbers using the **Learn** function.
 5. **Exit MIDI Map Mode**: Press **⌘M** again
     
 
-**Note:** Motion2MIDI automatically activates "No Processing Mode" during mapping to prevent unwanted parameter movements.
+**Note:** Motion2MIDI automatically activates "No MIDI Singal Generation" during mapping to prevent unwanted parameter movements.
 
 ![Ableton MIDI Map Tutorial](media/ableton-midi-map-guide.mp4)
 
