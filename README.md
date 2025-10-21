@@ -33,7 +33,7 @@ _Watch how Motion2MIDI transforms movements into MIDI control_
 
 - **Real-time hand tracking** using YOLO computer vision model
 - **4 MIDI CC outputs** - Map left/right hand X/Y positions to any parameter
-- **MIDI Learn** - Assign any CC number per parameter
+- **MIDI Map** - Assign any CC number per parameter
 - **Mute/Solo controls** - Focus on specific parameters
 - **Customizable visualization** - Toggle video feed, keypoints, skeleton, and control zones
 - **Per-session settings** - Preferences saved with your DAW project
@@ -96,10 +96,10 @@ Motion2MIDI sends 4 MIDI CC parameters:
 
 |Parameter|Default CC|Controls|
 |---|---|---|
-|LX|CC 1|Left hand horizontal position|
-|LY|CC 2|Left hand vertical position|
-|RX|CC 3|Right hand horizontal position|
-|RY|CC 4|Right hand vertical position|
+|LX|CC 11|Left hand horizontal position|
+|LY|CC 12|Left hand vertical position|
+|RX|CC 13|Right hand horizontal position|
+|RY|CC 14|Right hand vertical position|
 
 You can change the CC numbers using the **Learn** function.
 
