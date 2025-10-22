@@ -20,7 +20,7 @@ _Watch how Motion2MIDI transforms movements into MIDI control_
 
 ### macOS Apple Silicon (M1/M2/M3/M4)
 
-- **[Download Motion2MIDI v0.9.0-beta](https://github.com/froehlicht/motion2midi/releases/download/v0.9.0-beta/Motion2MIDI_v0.9.0-beta.zip)** - Includes both AU and VST3
+- **[Download Motion2MIDI v0.9.0-beta](https://github.com/froehlicht/motion2midi/releases/tag/v0.9.0)** - Includes both AU and VST3
 
 **Planned Support:**
 
