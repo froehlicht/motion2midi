@@ -86,7 +86,7 @@ Enable the IAC Driver for MIDI input/output:
 
 ### 4. Load Motion2MIDI
 
-1. **Load Motion2MIDI** as an instrument or MIDI FX track in your DAW
+1. **Load Motion2MIDI** 
 2. **Select MIDI output** in the plugin → Choose **"IAC Driver Bus 1"**
 3. **Grant camera permission** when prompted (System Settings → Privacy & Security → Camera)
 
