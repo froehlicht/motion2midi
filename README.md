@@ -8,7 +8,7 @@ Control your DAW with hand movements using your webcam.
 
 ## 🎬 See It In Action
 
-![Motion2MIDI Demo](media/demo.mp4)
+[![Motion2MIDI Demo](media/demo.mp4)](https://github.com/user-attachments/assets/4b8e2665-b8d5-49b8-9712-5e6043f14a10)
 
 _Watch how Motion2MIDI transforms movements into MIDI control_
 
