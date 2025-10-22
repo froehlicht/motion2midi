@@ -101,7 +101,7 @@ Motion2MIDI sends 4 MIDI CC parameters:
 |RX|CC 13|Right hand horizontal position|
 |RY|CC 14|Right hand vertical position|
 
-You can change the CC numbers using the **Learn** function.
+You can change the CC numbers using the **MIDI CC** selection.
 
 ---
 
