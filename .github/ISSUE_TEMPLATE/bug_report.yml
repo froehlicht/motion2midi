@@ -1,0 +1,104 @@
+name: Bug Report
+description: Report a bug in Motion2MIDI
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the form below.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear description of what the bug is
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this behavior?
+      placeholder: |
+        1. Open Logic Pro
+        2. Load Motion2MIDI plugin
+        3. Move hands in front of camera
+        4. See error/crash/unexpected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: The plugin should...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Motion2MIDI Version
+      description: Found in the plugin window or filename
+      placeholder: e.g., 1.0.0-beta
+    validations:
+      required: true
+
+  - type: dropdown
+    id: daw
+    attributes:
+      label: DAW
+      description: Which DAW are you using?
+      options:
+        - Logic Pro X
+        - Logic Pro 11
+        - Ableton Live 11
+        - Ableton Live 12
+        - FL Studio 21
+        - Reaper
+        - GarageBand
+        - Other (please specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS Version
+      description: Found in System Settings → About
+      placeholder: e.g., 14.2 (Sonoma) or 15.0 (Sequoia)
+    validations:
+      required: true
+
+  - type: input
+    id: mac-model
+    attributes:
+      label: Mac Model & Chip
+      description: Found in System Settings → About
+      placeholder: e.g., MacBook Pro 2021 (M1 Pro)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: plugin-format
+    attributes:
+      label: Plugin Format
+      description: Which format are you using?
+      options:
+        - AU (Audio Unit)
+        - VST3
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: |
+        Any other relevant information, screenshots, console logs, etc.
+        
+        Tip: You can attach images by dragging & dropping them here.
+      placeholder: Add any other context about the problem here

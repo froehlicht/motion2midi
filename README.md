@@ -33,7 +33,7 @@ _Watch how Motion2MIDI transforms movements into MIDI control_
 
 - **Real-time hand tracking** using YOLO computer vision model
 - **4 MIDI CC outputs** - Map left/right hand X/Y positions to any parameter
-- **MIDI Learn** - Assign any CC number per parameter
+- **MIDI Map** - Assign any CC number per parameter
 - **Mute/Solo controls** - Focus on specific parameters
 - **Customizable visualization** - Toggle video feed, keypoints, skeleton, and control zones
 - **Per-session settings** - Preferences saved with your DAW project
@@ -86,7 +86,7 @@ Enable the IAC Driver for MIDI input/output:
 
 ### 4. Load Motion2MIDI
 
-1. **Load Motion2MIDI** as an instrument or MIDI FX track in your DAW
+1. **Load Motion2MIDI** 
 2. **Select MIDI output** in the plugin → Choose **"IAC Driver Bus 1"**
 3. **Grant camera permission** when prompted (System Settings → Privacy & Security → Camera)
 
@@ -96,10 +96,10 @@ Motion2MIDI sends 4 MIDI CC parameters:
 
 |Parameter|Default CC|Controls|
 |---|---|---|
-|LX|CC 1|Left hand horizontal position|
-|LY|CC 2|Left hand vertical position|
-|RX|CC 3|Right hand horizontal position|
-|RY|CC 4|Right hand vertical position|
+|LX|CC 11|Left hand horizontal position|
+|LY|CC 12|Left hand vertical position|
+|RX|CC 13|Right hand horizontal position|
+|RY|CC 14|Right hand vertical position|
 
 You can change the CC numbers using the **Learn** function.
 
@@ -124,7 +124,7 @@ You can change the CC numbers using the **Learn** function.
 5. **Exit MIDI Map Mode**: Press **⌘M** again
     
 
-**Note:** Motion2MIDI automatically activates "No Processing Mode" during mapping to prevent unwanted parameter movements.
+**Note:** Motion2MIDI automatically activates "No MIDI Singal Generation" during mapping to prevent unwanted parameter movements.
 
 ![Ableton MIDI Map Tutorial](media/ableton-midi-map-guide.mp4)
 
@@ -276,7 +276,17 @@ For questions, issues, or feedback:
 
 ## 📄 License
 
-Closed-source software. All rights reserved.
+**Proprietary Software - Closed Source**
+
+This software requires acceptance of the End User License Agreement (EULA) 
+before use. The EULA will be presented on first launch of the plugin.
+
+**Key Terms:**
+- ✅ Free for beta testing
+- ❌ No redistribution 
+- 📹 Requires camera access (all processing is local)
+
+All rights reserved.
 
 ---
 
