@@ -276,7 +276,17 @@ For questions, issues, or feedback:
 
 ## 📄 License
 
-Closed-source software. All rights reserved.
+**Proprietary Software - Closed Source**
+
+This software requires acceptance of the End User License Agreement (EULA) 
+before use. The EULA will be presented on first launch of the plugin.
+
+**Key Terms:**
+- ✅ Free for beta testing
+- ❌ No redistribution 
+- 📹 Requires camera access (all processing is local)
+
+All rights reserved.
 
 ---
 
