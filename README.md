@@ -126,7 +126,7 @@ You can change the CC numbers using the **Learn** function.
 
 **Note:** Motion2MIDI automatically activates "No MIDI Singal Generation" during mapping to prevent unwanted parameter movements.
 
-![[Ableton MIDI Map Tutorial](https://github.com/user-attachments/assets/23a0492c-1d08-4524-bdba-1bcccf51d312)
+https://github.com/user-attachments/assets/fa437fa3-8ec9-4366-bde5-92c8de378c00
 
 ### FL Studio
 
