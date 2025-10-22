@@ -290,7 +290,7 @@ All rights reserved.
 
 ---
 
-## 🙏 Acknowledgments
+## ✨ Acknowledgments
 
 - Hand detection powered by YOLO
 - Built with JUCE framework
