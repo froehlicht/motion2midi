@@ -16,15 +16,14 @@ _Watch how Motion2MIDI transforms movements into MIDI control_
 
 ## 📦 Download
 
-**Latest Release:** [Download Motion2MIDI v0.9.0-beta](https://github.com/froehlicht/motion2midi/releases/latest)
+**Latest Release:** [Download Motion2MIDI v0.9.2-beta](https://github.com/froehlicht/motion2midi/releases/latest)
 
-### macOS Apple Silicon (M1/M2/M3/M4)
+### macOS Universal (x86_64, arm64)
 
-- **[Download Motion2MIDI v0.9.0-beta](https://github.com/froehlicht/motion2midi/releases/tag/v0.9.0)** - Includes both AU and VST3
+- **[Download Motion2MIDI v0.9.2-beta](https://github.com/froehlicht/motion2midi/releases/tag/v0.9.2)** - Includes both AU and VST3
 
 **Planned Support:**
 
-- Intel Mac (coming soon)
 - Windows (coming soon)
 
 ---
@@ -199,7 +198,6 @@ You can also use the built-in feedback buttons:
 ## 📋 System Requirements
 
 - **macOS** 12.0 (Monterey) or later
-- **Apple Silicon** (M1/M2/M3/M4)
 - **Webcam** - Built-in or external USB camera
 - **DAW** - Any DAW with MIDI mapping functionality
 
@@ -223,7 +221,6 @@ This is currently a **beta version**. Thank you for helping us test!
 
 ### Beta Limitations:
 
-- macOS Apple Silicon only (Intel Mac support coming)
 - No Windows support yet
 
 ---
@@ -292,7 +289,7 @@ All rights reserved.
 
 ## ✨ Acknowledgments
 
-- Hand detection powered by YOLO
+- Hand detection powered by Mediapipe
 - Built with JUCE framework
 - Computer vision by OpenCV
 - Inference by ONNX Runtime
