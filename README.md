@@ -1,6 +1,4 @@
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/froehlicht/motion2midi/total) ![GitHub Tag](https://img.shields.io/github/v/tag/froehlicht/motion2midi) ![GitHub Repo stars](https://img.shields.io/github/stars/froehlicht/motion2midi) 
-
-[![Email](https://img.shields.io/badge/Email-white?logo=gmail)](mailto:contact@motion2midi.com)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/froehlicht/motion2midi/total) ![GitHub Tag](https://img.shields.io/github/v/tag/froehlicht/motion2midi) ![GitHub Repo stars](https://img.shields.io/github/stars/froehlicht/motion2midi) [![Email](https://img.shields.io/badge/Email-white?logo=gmail)](mailto:contact@motion2midi.com)
 
 
 
