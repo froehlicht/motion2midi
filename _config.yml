@@ -1,0 +1,30 @@
+# Motion2MIDI Landing Page Configuration
+title: Motion2MIDI
+description: Control your DAW with hand movements using your webcam
+url: "https://motion2midi.com"
+baseurl: ""
+
+# Theme (GitHub Pages compatible)
+# Option 1: Minimal - Clean and modern
+theme: jekyll-theme-minimal
+
+# Option 2: Cayman - GitHub style (default)
+# theme: jekyll-theme-cayman
+
+# Option 3: Slate - Dark theme
+# theme: jekyll-theme-slate
+
+# Plugins
+plugins:
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+
+# GitHub metadata
+repository: froehlicht/motion2midi
+
+# Exclude from processing
+exclude:
+  - README.md
+  - .github/
+  - Gemfile
+  - Gemfile.lock
