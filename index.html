@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion2MIDI - Control your DAW with hand movements</title>
+    <meta name="description" content="Transform hand movements into MIDI control using your webcam. Free AI-powered plugin for music producers.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #ffffff;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        /* Download CTA */
+        .cta-section {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .download-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .stats img {
+            height: 28px;
+        }
+        
+        /* Contact Section in CTA */
+        .contact-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 50px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-box h2 {
+            color: #2d3748;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .contact-box p {
+            font-size: 18px;
+            line-height: 2;
+        }
+        
+        .contact-box a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .contact-box a:hover {
+            color: #764ba2;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Content Sections */
+        .content {
+            padding: 80px 20px;
+        }
+        
+        .content h2 {
+            font-size: 2.5rem;
+            color: #1a202c;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .content h3 {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .content h4 {
+            font-size: 1.4rem;
+            color: #4a5568;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #4a5568;
+        }
+        
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .content li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+        
+        /* Feature Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        
+        /* Video Section */
+        .video-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .video-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Screenshot */
+        .screenshot {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+        
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 1.1rem;
+        }
+        
+        table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        table tr:hover {
+            background: #f7fafc;
+        }
+        
+        /* Blockquote */
+        blockquote {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 20px 30px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #4a5568;
+        }
+        
+        /* Code Blocks */
+        code {
+            background: #2d3748;
+            color: #68d391;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: #e2e8f0;
+        }
+        
+        /* Links */
+        .content a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .content a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        /* Checkmarks */
+        .content li::marker {
+            color: #667eea;
+        }
+        
+        /* Separator */
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #cbd5e0, transparent);
+            margin: 60px 0;
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .faq-item h3 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        
+        /* System Requirements Box */
+        .requirements-box {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .content h2 {
+                font-size: 2rem;
+            }
+            
+            .download-button {
+                padding: 15px 35px;
+                font-size: 18px;
+            }
+            
+            .contact-box {
+                padding: 30px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Motion2MIDI</h1>
+            <p class="tagline">Control your DAW with hand movements using your webcam</p>
+        </div>
+    </div>
+    
+    <!-- CTA Section with Download, Stats & Contact -->
+    <div class="cta-section">
+        <div class="container">
+            <a href="https://github.com/froehlicht/motion2midi/releases/latest" class="download-button">
+                ⬇️ Download Latest Release
+            </a>
+            
+            <div class="stats">
+                <img src="https://img.shields.io/github/downloads/froehlicht/motion2midi/total?style=for-the-badge&label=Downloads&color=667eea" alt="Downloads">
+                <img src="https://img.shields.io/github/v/tag/froehlicht/motion2midi?style=for-the-badge&label=Version&color=764ba2" alt="Version">
+                <img src="https://img.shields.io/github/stars/froehlicht/motion2midi?style=for-the-badge&color=667eea" alt="Stars">
+            </div>
+            
+            <div class="contact-box">
+                <h2>📧 Get in Touch</h2>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:contact@motion2midi.com">contact@motion2midi.com</a><br><br>
+                    <strong>GitHub:</strong> <a href="https://github.com/froehlicht/motion2midi">Repository</a><br><br>
+                    <strong>Issues:</strong> <a href="https://github.com/froehlicht/motion2midi/issues">Bug Reports & Features</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Video Demo Section -->
+    <div class="video-section">
+        <div class="container">
+            <h2>🎬 See It In Action</h2>
+            <div class="video-container">
+                <video controls>
+                    <source src="media/demo.mp4" type="video/mp4">
+                    Your browser doesn't support video playback.
+                </video>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="content">
+        <div class="container">
+            
+            <!-- Features -->
+            <h2>🎯 Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Real-time Hand Tracking</h3>
+                    <p>AI-powered computer vision using MediaPipe for accurate hand detection with minimal latency.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>4 MIDI CC Outputs</h3>
+                    <p>Map left/right hand X/Y positions to any DAW parameter. Full control over your music.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Flexible MIDI Mapping</h3>
+                    <p>Assign any CC number per parameter. Mute/Solo controls to focus on specific parameters.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Customizable Visualization</h3>
+                    <p>Toggle video feed, keypoints, skeleton, and control zones. Preferences saved per session.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Easy Setup</h3>
+                    <p>Works with Ableton Live, FL Studio, Logic Pro and more. Simple IAC Driver configuration.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Automatic Updates</h3>
+                    <p>Get notified when new versions are available. Always stay up to date.</p>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <!-- Quick Start -->
+            <h2>🚀 Quick Start Guide</h2>
+            
+            <h3>1. Installation</h3>
+            <ol>
+                <li><strong>Download</strong> Motion2MIDI from the link above</li>
+                <li><strong>Unzip</strong> the downloaded file</li>
+                <li><strong>Copy plugins</strong> to your plugin folder:
+                    <ul>
+                        <li><strong>AU:</strong> <code>~/Library/Audio/Plug-Ins/Components/Motion2MIDI.component</code></li>
+                        <li><strong>VST3:</strong> <code>~/Library/Audio/Plug-Ins/VST3/Motion2MIDI.vst3</code></li>
+                    </ul>
+                </li>
+                <li><strong>Restart</strong> your DAW</li>
+            </ol>
+            
+            <h3>2. Setup IAC Driver (macOS)</h3>
+            <p>The IAC Driver creates a virtual MIDI bus for routing MIDI between applications.</p>
+            <ol>
+                <li>Open <strong>Audio MIDI Setup</strong> (Applications → Utilities)</li>
+                <li>Go to <strong>Window → Show MIDI Studio</strong> (or press ⌘2)</li>
+                <li>Double-click the <strong>IAC Driver</strong> icon</li>
+                <li>Check <strong>"Device is online"</strong></li>
+            </ol>
+            
+            <h3>3. DAW Setup</h3>
+            <p>Enable the IAC Driver for MIDI input/output in your DAW's settings.</p>
+            
+            <h4>Ableton Live:</h4>
+            <ul>
+                <li>Go to <strong>Preferences → Link, Tempo & MIDI</strong></li>
+                <li>Under <strong>MIDI Ports</strong>, enable:
+                    <ul>
+                        <li><strong>Track</strong> (for IAC Driver) ✓</li>
+                        <li><strong>Remote</strong> (for IAC Driver) ✓</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <img src="media/ableton-midi-settings.png" alt="Ableton MIDI Settings" class="screenshot">
+            
+            <h4>FL Studio:</h4>
+            <ul>
+                <li>Go to <strong>Options → MIDI Settings</strong></li>
+                <li>Enable the IAC Driver in the input list</li>
+                <li>Set <strong>"Enable"</strong> to ON</li>
+            </ul>
+            
+            <h3>4. Load Motion2MIDI</h3>
+            <ol>
+                <li><strong>Load Motion2MIDI</strong> as an instrument/effect in your DAW</li>
+                <li><strong>Select MIDI output</strong> → Choose <strong>"IAC Driver Bus 1"</strong></li>
+                <li><strong>Grant camera permission</strong> when prompted</li>
+            </ol>
+            
+            <h3>5. MIDI Mapping</h3>
+            <p>Motion2MIDI sends 4 MIDI CC parameters:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Default CC</th>
+                        <th>Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LX</td>
+                        <td>CC 11</td>
+                        <td>Left hand horizontal position</td>
+                    </tr>
+                    <tr>
+                        <td>LY</td>
+                        <td>CC 12</td>
+                        <td>Left hand vertical position</td>
+                    </tr>
+                    <tr>
+                        <td>RX</td>
+                        <td>CC 13</td>
+                        <td>Right hand horizontal position</td>
+                    </tr>
+                    <tr>
+                        <td>RY</td>
+                        <td>CC 14</td>
+                        <td>Right hand vertical position</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>You can change the CC numbers using the <strong>MIDI CC</strong> selection dropdown.</p>
+            
+            <hr>
+            
+            <!-- MIDI Mapping in DAWs -->
+            <h2>🎛️ MIDI Mapping in Your DAW</h2>
+            
+            <h3>Ableton Live</h3>
+            <ol>
+                <li><strong>Enable MIDI Map Mode:</strong> Press <strong>⌘M</strong> (macOS) or <strong>Ctrl+M</strong> (Windows)</li>
+                <li><strong>Select the parameter</strong> you want to control (e.g., filter cutoff, volume)</li>
+                <li><strong>In Motion2MIDI:</strong> Click the <strong>Map</strong> button for the desired parameter (LX, LY, RX, or RY)</li>
+                <li>The parameter will highlight and the mapping is established</li>
+                <li><strong>Exit MIDI Map Mode:</strong> Press <strong>⌘M</strong> again</li>
+            </ol>
+            
+            <blockquote>
+                <strong>Note:</strong> Motion2MIDI automatically activates "No MIDI Signal Generation" during mapping to prevent unwanted parameter movements.
+            </blockquote>
+            
+            <h3>FL Studio</h3>
+            <ol>
+                <li><strong>In Motion2MIDI:</strong> Click the <strong>Map</strong> button for the desired parameter</li>
+                <li><strong>In FL Studio:</strong> Move the parameter you want to control</li>
+                <li>Right-click the parameter → <strong>Link to controller</strong></li>
+                <li>The connection is established</li>
+            </ol>
+            
+            <h3>Other DAWs</h3>
+            <p>Most DAWs support standard MIDI Learn functionality:</p>
+            <ol>
+                <li>Activate MIDI Learn in your DAW</li>
+                <li>Click the parameter you want to control</li>
+                <li>Click the <strong>MAP</strong> button in Motion2MIDI</li>
+                <li>Deactivate the MAP button before selecting the next parameter</li>
+            </ol>
+            
+            <hr>
+            
+            <!-- Tips & Best Practices -->
+            <h2>💡 Tips & Best Practices</h2>
+            
+            <h3>Camera Setup</h3>
+            <ul>
+                <li><strong>Lighting matters</strong> - Ensure your hands are well-lit for best tracking</li>
+                <li><strong>Camera angle</strong> - Position camera to capture your hands clearly</li>
+                <li><strong>Background</strong> - Avoid cluttered backgrounds for better detection</li>
+            </ul>
+            
+            <h3>Control Zones</h3>
+            <ul>
+                <li>Red dots show the tracked hand positions used for MIDI</li>
+                <li>These control points are always visible and drive the MIDI output</li>
+            </ul>
+            
+            <h3>Workflow Tips</h3>
+            <ul>
+                <li><strong>Solo mode</strong> - Use solo buttons to focus on one parameter at a time</li>
+                <li><strong>Mute</strong> - Temporarily disable a parameter without losing its mapping</li>
+                <li><strong>No Processing Mode</strong> - Stops MIDI output (useful during setup)</li>
+                <li><strong>Settings</strong> - Click the Settings button for visualization options</li>
+            </ul>
+            
+            <hr>
+            
+            <!-- System Requirements -->
+            <h2>📋 System Requirements</h2>
+            <div class="requirements-box">
+                <ul>
+                    <li><strong>macOS</strong> 12.0 (Monterey) or later</li>
+                    <li><strong>Webcam</strong> - Built-in or external USB camera</li>
+                    <li><strong>DAW</strong> - Any DAW with MIDI mapping functionality</li>
+                </ul>
+                
+                <h4>Tested DAWs</h4>
+                <ul>
+                    <li>✅ Ableton Live 11</li>
+                    <li>✅ FL Studio 21</li>
+                </ul>
+            </div>
+            
+            <hr>
+            
+            <!-- FAQ -->
+            <h2>❓ Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h3>The plugin doesn't appear in my DAW</h3>
+                <ul>
+                    <li>Make sure you copied it to the correct folder</li>
+                    <li>Restart your DAW completely</li>
+                </ul>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Camera permission denied</h3>
+                <p>Go to System Settings → Privacy & Security → Camera and enable permission for your DAW.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>MIDI output not working</h3>
+                <ul>
+                    <li>Activate the IAC Driver (see Setup section)</li>
+                    <li>In Motion2MIDI, select IAC Driver as MIDI output</li>
+                    <li>In your DAW, enable IAC Driver in MIDI settings</li>
+                    <li>Make sure the track receiving MIDI has "IAC Driver" as input</li>
+                </ul>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Tracking is inaccurate</h3>
+                <ul>
+                    <li>Improve lighting conditions</li>
+                    <li>Position camera to clearly see your hands</li>
+                    <li>Avoid cluttered backgrounds</li>
+                    <li>Ensure hands are not occluded</li>
+                </ul>
+                <p><em>Note: Hand tracking accuracy is continuously being improved in future updates.</em></p>
+            </div>
+            
+            <hr>
+            
+            <!-- Support -->
+            <h2>🔧 Support</h2>
+            <p>For questions, issues, or feedback:</p>
+            <ul>
+                <li><strong>GitHub Issues:</strong> <a href="https://github.com/froehlicht/motion2midi/issues/new">Create an issue</a></li>
+                <li><strong>Email:</strong> <a href="mailto:contact@motion2midi.com">contact@motion2midi.com</a></li>
+                <li><strong>Bug Reports:</strong> <a href="https://github.com/froehlicht/motion2midi/issues/new?template=bug_report.yml">Report a Bug</a></li>
+                <li><strong>Feature Requests:</strong> <a href="https://github.com/froehlicht/motion2midi/issues/new?template=feature_request.yml">Request a Feature</a></li>
+            </ul>
+            
+            <hr>
+            
+            <!-- License -->
+            <h2>📄 License</h2>
+            <blockquote>
+                <strong>Proprietary Software - Closed Source</strong><br><br>
+                This software requires acceptance of the End User License Agreement (EULA) before use. The EULA will be presented on first launch of the plugin.
+                <br><br>
+                <strong>Key Terms:</strong>
+                <ul>
+                    <li>✅ Free for beta testing</li>
+                    <li>❌ No redistribution</li>
+                    <li>🔹 Requires camera access (all processing is local)</li>
+                </ul>
+                All rights reserved.
+            </blockquote>
+            
+            <hr>
+            
+            <!-- Acknowledgments -->
+            <h2>✨ Acknowledgments</h2>
+            <ul>
+                <li>Hand detection powered by <strong>MediaPipe</strong></li>
+                <li>Built with <strong>JUCE framework</strong></li>
+                <li>Computer vision by <strong>OpenCV</strong></li>
+                <li>Inference by <strong>ONNX Runtime</strong></li>
+            </ul>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
